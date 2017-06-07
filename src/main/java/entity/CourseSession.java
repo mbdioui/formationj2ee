@@ -3,65 +3,97 @@ package entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 @Entity
+@Table (name="COURSE_SESSION")
 public class CourseSession implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private Integer sessionId;
+	@GeneratedValue(strategy= GenerationType.AUTO)
+	@Column (name = "COURSE_SESSION_ID")
+	private Long sessionId;
+	
+	@Column (name = "START_DATE", nullable = false)
+    @Temporal(TemporalType.DATE)
 	private Date startdate;
+	
+	@Column (name = "END_DATE", nullable = false)
+    @Temporal(TemporalType.DATE)
 	private Date enddate;
-	private String coursecode;
-	private Integer locationId;
-	public Integer getSessionId() {
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Course course;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Location location;
+
+	public CourseSession() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public CourseSession(Long sessionId, Date startdate, Date enddate, Course course, Location location) {
+		super();
+		this.sessionId = sessionId;
+		this.startdate = startdate;
+		this.enddate = enddate;
+		this.course = course;
+		this.location = location;
+	}
+
+	public Long getSessionId() {
 		return sessionId;
 	}
-	public void setSessionId(Integer sessionId) {
+
+	public void setSessionId(Long sessionId) {
 		this.sessionId = sessionId;
 	}
+
 	public Date getStartdate() {
 		return startdate;
 	}
+
 	public void setStartdate(Date startdate) {
 		this.startdate = startdate;
 	}
+
 	public Date getEnddate() {
 		return enddate;
 	}
+
 	public void setEnddate(Date enddate) {
 		this.enddate = enddate;
 	}
-	public String getCoursecode() {
-		return coursecode;
+
+	public Course getCourse() {
+		return course;
 	}
-	public void setCoursecode(String coursecode) {
-		this.coursecode = coursecode;
+
+	public void setCourse(Course course) {
+		this.course = course;
 	}
-	public Integer getLocationId() {
-		return locationId;
+
+	public Location getLocation() {
+		return location;
 	}
-	public void setLocationId(Integer locationId) {
-		this.locationId = locationId;
+
+	public void setLocation(Location location) {
+		this.location = location;
 	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public String toString() {
 		return "CourseSession [sessionId=" + sessionId + ", startdate=" + startdate + ", enddate=" + enddate
-				+ ", coursecode=" + coursecode + ", locationId=" + locationId + "]";
+				+ ", course=" + course + ", location=" + location + "]";
 	}
-	public CourseSession(Integer sessionId, Date startdate, Date enddate, String coursecode, Integer locationId) {
-		super();
-		this.sessionId = sessionId;
-		this.startdate = startdate;
-		this.enddate = enddate;
-		this.coursecode = coursecode;
-		this.locationId = locationId;
-	}
-	public CourseSession() {
-		super();
-	}
+	
+	
 	
 
 }

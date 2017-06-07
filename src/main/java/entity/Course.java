@@ -2,22 +2,35 @@ package entity;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
+
 
 
 
 @Entity
+@Table(name= "COURSE")
 public class Course implements Serializable{
 	
-private static final long serialVersionUID = 322625514552L;
+private static final long serialVersionUID = 1L;
+
 @Id
-@GeneratedValue(strategy= GenerationType.IDENTITY)
+@Column (name =  "Code")
  private Integer CODE;
+@Column (name = "title", unique = true , nullable = false)
  private String TITLE;
  
+
+public Course() {
+	super();
+}
+
+
+@Override
+public String toString() {
+	return "Course [CODE=" + CODE + ", TITLE=" + TITLE + "]";
+}
+
+
 public Integer getCODE() {
 	return CODE;
 }
@@ -30,21 +43,12 @@ public String getTITLE() {
 public void setTITLE(String tITLE) {
 	TITLE = tITLE;
 }
-@Override
-public String toString() {
-	return "Course [CODE=" + CODE + ", TITLE=" + TITLE + "]";
-}
 
-public Course() {
-	super();
-	// TODO Auto-generated constructor stub
-}
 
 public Course(Integer cODE, String tITLE) {
 	super();
 	CODE = cODE;
 	TITLE = tITLE;
 }
- 
  
 }

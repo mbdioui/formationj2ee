@@ -2,7 +2,7 @@ package test;
 
 import org.hibernate.Session;
 
-import tools.HibernateUtil;
+import util.HibernateUtil;
 
 public class App0 {
     

@@ -1,82 +1,133 @@
 package entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Client {
+	
+	private static final long serialVersionUID = 1L;
+	
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private Integer ID_Client;
+	@GeneratedValue(strategy= GenerationType.AUTO)
+	@Column (name = "CLIENT_ID")
+	private Long ID_Client;
+	@Column(name = "Last_name", unique = true, nullable = false)
 	private String LASTNAME;
+	@Column(name = "First_name", nullable = false)
 	private String FIRSTNAME;
+	@Column(name = "Address",nullable = false)
 	private String ADDRESS;
-	private Integer PHONE;
+	@Column(name = "Phone", unique = true, nullable = false)
+	private String PHONE;
+	@Column (name = "Email", unique = true)
 	private String EMAIL;
-	private Integer COURSE_SESSION_ID;
-	public Integer getID_Client() {
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="COURSE_SESSION_ID")
+	private CourseSession coursession;
+	
+	
+	public Client() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public Client(Long iD_Client, String lASTNAME, String fIRSTNAME, String aDDRESS, String pHONE, String eMAIL,
+			CourseSession coursession) {
+		super();
+		ID_Client = iD_Client;
+		LASTNAME = lASTNAME;
+		FIRSTNAME = fIRSTNAME;
+		ADDRESS = aDDRESS;
+		PHONE = pHONE;
+		EMAIL = eMAIL;
+		this.coursession = coursession;
+	}
+
+
+	public Long getID_Client() {
 		return ID_Client;
 	}
-	public void setID_Client(Integer iD_Client) {
+
+
+	public void setID_Client(Long iD_Client) {
 		ID_Client = iD_Client;
 	}
+
+
 	public String getLASTNAME() {
 		return LASTNAME;
 	}
+
+
 	public void setLASTNAME(String lASTNAME) {
 		LASTNAME = lASTNAME;
 	}
+
+
 	public String getFIRSTNAME() {
 		return FIRSTNAME;
 	}
+
+
 	public void setFIRSTNAME(String fIRSTNAME) {
 		FIRSTNAME = fIRSTNAME;
 	}
+
+
 	public String getADDRESS() {
 		return ADDRESS;
 	}
+
+
 	public void setADDRESS(String aDDRESS) {
 		ADDRESS = aDDRESS;
 	}
-	public Integer getPHONE() {
+
+
+	public String getPHONE() {
 		return PHONE;
 	}
-	public void setPHONE(Integer pHONE) {
+
+
+	public void setPHONE(String pHONE) {
 		PHONE = pHONE;
 	}
+
+
 	public String getEMAIL() {
 		return EMAIL;
 	}
+
+
 	public void setEMAIL(String eMAIL) {
 		EMAIL = eMAIL;
 	}
-	public Integer getCOURSE_SESSION_ID() {
-		return COURSE_SESSION_ID;
+
+
+	public CourseSession getCoursession() {
+		return coursession;
 	}
-	public void setCOURSE_SESSION_ID(Integer cOURSE_SESSION_ID) {
-		COURSE_SESSION_ID = cOURSE_SESSION_ID;
+
+
+	public void setCoursession(CourseSession coursession) {
+		this.coursession = coursession;
 	}
+
+
 	@Override
 	public String toString() {
 		return "Client [ID_Client=" + ID_Client + ", LASTNAME=" + LASTNAME + ", FIRSTNAME=" + FIRSTNAME + ", ADDRESS="
-				+ ADDRESS + ", PHONE=" + PHONE + ", EMAIL=" + EMAIL + ", COURSE_SESSION_ID=" + COURSE_SESSION_ID + "]";
+				+ ADDRESS + ", PHONE=" + PHONE + ", EMAIL=" + EMAIL + ", coursession=" + coursession + "]";
 	}
-	public Client(Integer iD_Client, String lASTNAME, String fIRSTNAME, String aDDRESS, Integer pHONE, String eMAIL,
-			Integer cOURSE_SESSION_ID) {
-		super();
-		ID_Client = iD_Client;
-		LASTNAME = lASTNAME;
-		FIRSTNAME = fIRSTNAME;
-		ADDRESS = aDDRESS;
-		PHONE = pHONE;
-		EMAIL = eMAIL;
-		COURSE_SESSION_ID = cOURSE_SESSION_ID;
-	}
-	public Client() {
-		super();
-	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
