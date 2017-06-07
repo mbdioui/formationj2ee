@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,7 +26,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">LOG4J</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -45,7 +46,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h2 class="sub-header">Section title</h2>
+          <h2 class="sub-header">List Of Courses</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -57,54 +58,12 @@
                 </tr>
               </thead>
               <tbody>
+              <c:forEach items="${Courses}" var="Course">
                 <tr>
-                  <td>1</td>
-                  <td>BD50</td>
-                  <td>26/08/2017</td>
-                  <td>Belfort</td>
+                  <td><c:out value="${ Course.code }"></c:out></td>
+                  <td><c:out value="${ Course.title }"></c:out></td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>LO54</td>
-                  <td>09/09/2017</td>
-                  <td>Sevenan</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Integer</td>
-                  <td>nec</td>
-                  <td>odio</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>libero</td>
-                  <td>Sed</td>
-                  <td>cursus</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>dapibus</td>
-                  <td>diam</td>
-                  <td>Sed</td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>Nulla</td>
-                  <td>quis</td>
-                  <td>sem</td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>nibh</td>
-                  <td>elementum</td>
-                  <td>imperdiet</td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>sagittis</td>
-                  <td>ipsum</td>
-                  <td>Praesent</td>
-                </tr>
+                </c:forEach>
               </tbody>
             </table>
           </div>

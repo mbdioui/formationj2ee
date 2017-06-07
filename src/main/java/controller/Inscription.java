@@ -1,4 +1,4 @@
-package servlet;
+package controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,20 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Acceuil")
-public class AcceuilServlet extends HttpServlet {
+@WebServlet("/InscriptionClients")
+public class Inscription extends HttpServlet {
 	private static final long serialVersionUID = 1L;
- 
-    public AcceuilServlet() {
+
+    public Inscription() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.getServletContext().getRequestDispatcher("/WEB-INF/Acceuil.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/InscriptionClient.jsp").forward(request, response);
 	}
 
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

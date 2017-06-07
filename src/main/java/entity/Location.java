@@ -1,37 +1,56 @@
 package entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name= "LOCATION")
 public class Location {
-	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private Integer locationID;
+	
+	private static final long serialVersionUID = 1L;
+    
+	@Id 
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column (name = "LOCATION_ID")
+	private Long locationID;
+	
+	@Column (name = "City", nullable = false)
 	private String city;
-	public Integer getLocationID() {
-		return locationID;
+
+	public Location() {
+		super();	
 	}
-	public void setLocationID(Integer locationID) {
-		this.locationID = locationID;
-	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	@Override
-	public String toString() {
-		return "Location [locationID=" + locationID + ", city=" + city + "]";
-	}
-	public Location(Integer locationID, String city) {
+
+	public Location(Long locationID, String city) {
 		super();
 		this.locationID = locationID;
 		this.city = city;
 	}
+
+	public Long getLocationID() {
+		return locationID;
+	}
+
+	public void setLocationID(Long locationID) {
+		this.locationID = locationID;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	@Override
+	public String toString() {
+		return "Location [locationID=" + locationID + ", city=" + city + "]";
+	}
+	
 	
 
 }
