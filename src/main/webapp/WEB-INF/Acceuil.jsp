@@ -58,7 +58,7 @@
                 </tr>
               </thead>
               <tbody>
-              <c:forEach items="${Courses}" var="Clients">
+              <c:forEach items="${Courses}" var="Course">
                 <tr>
                   <td><c:out value="${ Course.code }"></c:out></td>
                   <td><c:out value="${ Course.title }"></c:out></td>
