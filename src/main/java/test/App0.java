@@ -3,8 +3,10 @@ package test;
 import entity.Client;
 import java.util.List;
 
-import org.hibernate.Session;
+import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import entity.Course;
 import entity.CourseSession;
 import entity.Location;
@@ -13,6 +15,9 @@ import service.ClientService;
 import service.CourseService;
 import service.CourseSessionService;
 import service.LocationService;
+import entity.Client;
+import entity.Course;
+import service.CourseService;
 import util.HibernateUtil;
 
 public class App0 {
@@ -78,7 +83,13 @@ public class App0 {
               cs.addCourseSessionToClient(c3, cs8);
               cs.addCourseSessionToClient(c4, cs2);
                */
-		
+	
+	       Session session=HibernateUtil.getSessionFactory().openSession();
+	       CourseService service = new CourseService();
+	       List<Course> courses=service.getAllCourses();
+	       for (Course course : courses) {
+			System.out.print(course.toString()+'\n');
+	       }
 	   }
 	    
 	}
