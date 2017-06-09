@@ -3,7 +3,7 @@ package entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name= "LOCATION")
+@Table(name= "Location")
 public class Location {
 	
 	private static final long serialVersionUID = 1L;
@@ -20,11 +20,12 @@ public class Location {
 		super();	
 	}
 
-	public Location(Long locationID, String city) {
-		super();
-		this.locationID = locationID;
+	public Location( String city) {
+		
 		this.city = city;
 	}
+
+
 
 	public Long getLocationID() {
 		return locationID;

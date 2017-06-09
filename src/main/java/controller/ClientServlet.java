@@ -25,9 +25,10 @@ public class ClientServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ClientService clientservice = new ClientService();
 		List<Client> clients = clientservice.getAllClients();
-		this.getServletContext().getRequestDispatcher("WEB-INF/ListCLients.jsp").forward(request, response);
+                System.out.println(clients.size());
+                request.setAttribute("client", clients);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/ListClients.jsp").forward(request, response);
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

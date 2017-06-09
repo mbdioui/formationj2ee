@@ -15,7 +15,7 @@ private static final long serialVersionUID = 1L;
 
 @Id
 @Column (name =  "Code")
- private Integer CODE;
+ private String CODE;
 @Column (name = "title", unique = true , nullable = false)
  private String TITLE;
  
@@ -31,10 +31,10 @@ public String toString() {
 }
 
 
-public Integer getCODE() {
+public String getCODE() {
 	return CODE;
 }
-public void setCODE(Integer cODE) {
+public void setCODE(String cODE) {
 	CODE = cODE;
 }
 public String getTITLE() {
@@ -45,7 +45,7 @@ public void setTITLE(String tITLE) {
 }
 
 
-public Course(Integer cODE, String tITLE) {
+public Course(String cODE, String tITLE) {
 	super();
 	CODE = cODE;
 	TITLE = tITLE;

@@ -5,7 +5,7 @@ import java.util.Date;
 
 import javax.persistence.*;
 @Entity
-@Table (name="COURSE_SESSION")
+@Table (name="Cours_session")
 public class CourseSession implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -34,14 +34,15 @@ public class CourseSession implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public CourseSession(Long sessionId, Date startdate, Date enddate, Course course, Location location) {
+	public CourseSession(Date startdate, Date enddate, Course course, Location location) {
 		super();
-		this.sessionId = sessionId;
 		this.startdate = startdate;
 		this.enddate = enddate;
 		this.course = course;
 		this.location = location;
 	}
+
+    
 
 	public Long getSessionId() {
 		return sessionId;

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -60,10 +61,17 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                </tr>
+                <c:forEach items="${client}" var="clientMap">
+               <tr>
+                 <td><c:out value="${clientMap.ID_Client }"></c:out></td>
+                 <td><c:out value="${clientMap.LASTNAME }"></c:out></td>
+                 <td><c:out value="${clientMap.FIRSTNAME }"></c:out></td>
+                 <td><c:out value="${clientMap.ADDRESS }"></c:out></td>
+                 <td><c:out value="${clientMap.PHONE }"></c:out></td>
+                 <td><c:out value="${clientMap.EMAIL }"></c:out></td>
+                 <td><c:out value="hhh"></c:out></td>
+               </tr>
+               </c:forEach>
               </tbody>
             </table>
           </div>

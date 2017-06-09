@@ -10,7 +10,7 @@ public class Client {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
-	@Column (name = "CLIENT_ID")
+	@Column (name = "ID")
 	private Long ID_Client;
 	@Column(name = "Last_name", unique = true, nullable = false)
 	private String LASTNAME;
@@ -23,7 +23,7 @@ public class Client {
 	@Column (name = "Email", unique = true)
 	private String EMAIL;
 	@ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="COURSE_SESSION_ID")
+        @JoinColumn(name="COURSE_SESSION_ID")
 	private CourseSession coursession;
 	
 	
@@ -33,17 +33,19 @@ public class Client {
 	}
 
 
-	public Client(Long iD_Client, String lASTNAME, String fIRSTNAME, String aDDRESS, String pHONE, String eMAIL,
-			CourseSession coursession) {
+	public Client(String lASTNAME, String fIRSTNAME, String aDDRESS, String pHONE, String eMAIL) {
 		super();
-		ID_Client = iD_Client;
 		LASTNAME = lASTNAME;
 		FIRSTNAME = fIRSTNAME;
 		ADDRESS = aDDRESS;
 		PHONE = pHONE;
 		EMAIL = eMAIL;
-		this.coursession = coursession;
+		
 	}
+
+
+
+    
 
 
 	public Long getID_Client() {
