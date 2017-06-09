@@ -3,6 +3,7 @@ package entity;
 import javax.persistence.*;
 
 @Entity
+@Table(name="Client")
 public class Client {
 	
 	private static final long serialVersionUID = 1L;
