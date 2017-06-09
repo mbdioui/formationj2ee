@@ -46,24 +46,25 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h2 class="sub-header">List Of Courses</h2>
+          <h2 class="sub-header">List Of CourseSession</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>session</th>
-                  <th>Name Course</th>
-                  <th>Date Course</th>
-                  <th>Location Course</th>
+                  <th>ID</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Course ID</th>
+                  <th>Location ID </th>
                 </tr>
               </thead>
               <tbody>
-              <c:forEach items="${Courses}" var="Course">
                 <tr>
-                  <td><c:out value="${ Course.code }"></c:out></td>
-                  <td><c:out value="${ Course.title }"></c:out></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
-                </c:forEach>
               </tbody>
             </table>
           </div>

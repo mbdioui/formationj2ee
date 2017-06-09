@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+	<servlet>
+		<description>
+		</description>
+		<display-name>Client</display-name>
+		<servlet-name>Client</servlet-name>
+		<servlet-class>controller.Client</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>CourseSessionServlet</display-name>
+		<servlet-name>CourseSessionServlet</servlet-name>
+		<servlet-class>controller.CourseSessionServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>LocationServlet</display-name>
+		<servlet-name>LocationServlet</servlet-name>
+		<servlet-class>controller.LocationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Client</servlet-name>
+		<url-pattern>/Client</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CourseSessionServlet</servlet-name>
+		<url-pattern>/CourseSessionServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LocationServlet</servlet-name>
+		<url-pattern>/LocationServlet</url-pattern>
+	</servlet-mapping>
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>
