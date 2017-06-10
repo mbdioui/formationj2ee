@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -50,20 +51,24 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>ID Client</th>
-                  <th>Nom CLiente</th>
-                  <th>Prenom Client</th>
-                  <th>Address</th>
-                  <th>Téléphone</th>
-                  <th>Email</th>
-                  <th>CourseSession ID</th>
+                  <th>Course Session ID</th>
+                  <th>End date</th>
+                  <th>Start date</th>
+                  <th>course code</th>
+                  <th>location</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                </tr>
+                <c:forEach items="${coursesessions}" var="coursesession">
+               <tr>
+                 <td><c:out value="${coursesession.sessionId }"></c:out></td>
+                 <td><c:out value="${coursesession.enddate }"></c:out></td>
+                 <td><c:out value="${coursesession.startdate }"></c:out></td>
+                 <td><c:out value="${coursesession.course }"></c:out></td>
+                 <td><c:out value="${coursesession.location }"></c:out></td>
+                 <td><c:out value="hhh"></c:out></td>
+               </tr>
+               </c:forEach>
               </tbody>
             </table>
           </div>
