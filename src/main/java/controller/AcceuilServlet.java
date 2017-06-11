@@ -14,23 +14,22 @@ import service.CourseService;
 
 @WebServlet(name = "AcceuilServlet", urlPatterns = {"/Acceuil"})
 public class AcceuilServlet extends HttpServlet {
- 
+
     public AcceuilServlet() {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		CourseService courseService = new CourseService();
-        List <Course> courses = courseService.getAllCourses();	       
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        CourseService courseService = new CourseService();
+        List<Course> courses = courseService.getAllCourses();
         request.setAttribute("Courses", courses);
-		this.getServletContext().getRequestDispatcher("/WEB-INF/Acceuil.jsp").forward(request, response);
-	}
+        this.getServletContext().getRequestDispatcher("/WEB-INF/Acceuil.jsp").forward(request, response);
+    }
 
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		this.doGet(request, response);
-	}
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        this.doGet(request, response);
+    }
 
 }

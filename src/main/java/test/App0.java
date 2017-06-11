@@ -24,7 +24,7 @@ public class App0 {
     
 	   public static void main(String[] args)
 	   {
-	       ClientService cs = new ClientService();
+	ClientService cs = new ClientService();
         CourseService courseService = new CourseService();
         CourseSessionService css = new CourseSessionService();
         LocationService locationService = new LocationService();
