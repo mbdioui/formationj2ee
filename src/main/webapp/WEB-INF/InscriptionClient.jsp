@@ -17,12 +17,10 @@
 <body>
 
     <div class="container">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      
+    <nav class="navbar navbar-inverse navbar-fixed-top">   
             <div>
                     <jsp:include page="/Nav.jsp"/>
             </div>
-             
     </nav>
     </div>
 
