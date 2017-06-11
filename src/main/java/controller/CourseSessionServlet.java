@@ -26,6 +26,7 @@ public class CourseSessionServlet extends HttpServlet {
             List<CourseSession> courseSessions = courseSessionService.getAllCourseSessions();
             request.setAttribute("CourseSession", courseSessions);
             this.getServletContext().getRequestDispatcher("/WEB-INF/ListCourseSession.jsp").forward(request, response);
+
 	}
 
 	

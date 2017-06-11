@@ -17,7 +17,7 @@
 <body>
 
     
-    <div class="container-fluid">
+    <div class="container">
     <nav class="navbar navbar-inverse navbar-fixed-top">
       
             <div>
