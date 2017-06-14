@@ -1,33 +1,19 @@
 package test;
 
-import entity.Client;
-import java.util.List;
+import controller.SendHTMLEmail;
+import java.util.Properties;
+import javax.mail.Session;
 
-import java.util.List;
 
-import org.hibernate.Query;
-import org.hibernate.Session;
-import entity.Course;
-import entity.CourseSession;
-import entity.Location;
-import java.util.Date;
-import service.ClientService;
-import service.CourseService;
-import service.CourseSessionService;
-import service.LocationService;
-import entity.Client;
-import entity.Course;
-import service.CourseService;
-import util.HibernateUtil;
 
 public class App0 {
     
 	   public static void main(String[] args)
 	   {
-	ClientService cs = new ClientService();
-        CourseService courseService = new CourseService();
-        CourseSessionService css = new CourseSessionService();
-        LocationService locationService = new LocationService();
+//	ClientService cs = new ClientService();
+//        CourseService courseService = new CourseService();
+//        CourseSessionService css = new CourseSessionService();
+//        LocationService locationService = new LocationService();
 
         /* Client c1 = new Client("hamza", "maatougui", "belfort", "296512", "hm@ubtm.fr");
               Client c2 = new Client("Fathellah", "Tahiri", "belfort", "29651254", "ft@ubtm.fr");
@@ -84,12 +70,34 @@ public class App0 {
               cs.addCourseSessionToClient(c4, cs2);
                */
 	
-	       Session session=HibernateUtil.getSessionFactory().openSession();
-	       CourseService service = new CourseService();
-	       List<Course> courses=service.getAllCourses();
-	       for (Course course : courses) {
-			System.out.print(course.toString()+'\n');
-	       }
+//	       Session session=HibernateUtil.getSessionFactory().openSession();
+//	       CourseSessionService service = new CourseSessionService();
+//	       List<CourseSession> courses=service.getCourseByClientId(4);
+//	       for (CourseSession course : courses) {
+//			System.out.print(course.toString()+'\n');
+//	       }
+               // subscribe one client to one course
+               
+//               Session session=HibernateUtil.getSessionFactory().openSession();
+//	       CourseSessionService service = new CourseSessionService();
+//               ClientService serviceclient= new ClientService();
+//               long l =4L;
+//               Client client=serviceclient.getClientById(l);
+//               service.addClientToCourseSession(11, client);  
+               
+                    
+            System.out.println("SimpleEmail Start");
+		
+	    String smtpHostServer = "localhost";
+	    String emailID = "pankaj@journaldev.com";
+	    
+	    Properties props = System.getProperties();
+
+	    props.put("mail.smtp.host", smtpHostServer);
+
+	    Session session = Session.getInstance(props, null);
+	    
+	    SendHTMLEmail.sendEmail(session, emailID,"SimpleEmail Testing Subject", "SimpleEmail Testing Body");
 	   }
 	    
 	}

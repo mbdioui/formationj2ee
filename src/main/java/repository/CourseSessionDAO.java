@@ -1,8 +1,10 @@
 package repository;
 
+import entity.Client;
 import java.util.ArrayList;
 import entity.Course;
 import entity.CourseSession;
+import entity.Course_session_join;
 import entity.Location;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,6 +16,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
+import service.CourseSessionService;
 import util.HibernateUtil;
 
 /**
@@ -105,6 +108,28 @@ public class CourseSessionDAO {
             session.close();
         }
         return courseSession;
+    }
+    public List<CourseSession> getCourseSessionByClient(int ClientID) {
+        List<Course_session_join> courses = new ArrayList<>();
+        List<CourseSession> coursessessions= new ArrayList<>();
+        Transaction trns = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            trns = session.beginTransaction();
+            Query query = session.createQuery(" from Course_session_join where Client_ID = :id");
+            query.setInteger("id", ClientID);
+            courses = query.list();
+        } catch (RuntimeException e) {
+            e.printStackTrace(System.out);
+        } finally {
+            session.close();
+        }
+        CourseSessionService service=new CourseSessionService();
+        for (Course_session_join sess  : courses) {
+            coursessessions.add(service.getCourseSessionById(sess.getCourse_session_ID()));              
+              }
+        return coursessessions;
+               
     }
 
     public List<CourseSession> getCourseSessionsByDate(Date date) {
@@ -211,6 +236,25 @@ public class CourseSessionDAO {
         } finally {
             session.close();
         }
+    }
+    public void addClientToCourseSession(int courseSessionid,Client client) {
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            transaction = session.beginTransaction();
+            Query query = session.createSQLQuery("INSERT INTO course_session_join (Client_ID, Course_session_ID)"+ 
+                                          "VALUES ("+client.getID_Client()+","+courseSessionid+")");
+            query.executeUpdate();
+            session.getTransaction().commit();
+        } catch (RuntimeException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace(System.out);
+        } finally {
+            session.close();
+        }
+        
     }
 
     public List<CourseSession> getCourseSessionsFilter(Date date, Long loc, String title) {

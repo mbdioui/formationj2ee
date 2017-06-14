@@ -5,14 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Log4j</title>
+<title>List of Clients</title>
 
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet"> 
     <link href="css/lightbox.css" rel="stylesheet"> 
-	<link href="css/main.css" rel="stylesheet">
-	<link href="css/responsive.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
 </head>
 <body>
 
@@ -21,9 +21,9 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       
             <div>
-                    <jsp:include page="/Nav.jsp"/>
+                    <jsp:include page="/Nav.jsp" />
             </div>
-             
+
     </nav>
     </div>
     
@@ -34,18 +34,17 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h2 class="sub-header">List Of Clients</h2>
+          <h2 class="sub-header text-center">List Of Clients</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
                   <th>ID Client</th>
-                  <th>Nom CLiente</th>
-                  <th>Prenom Client</th>
+                  <th>Last Name Client</th>
+                  <th>First Name Client</th>
                   <th>Address</th>
-                  <th>Téléphone</th>
-                  <th>Email</th>
-                  <th>CourseSession ID</th>
+                  <th>Phone</th>
+                  <th>Mail</th>
                 </tr>
               </thead>
               <tbody>
@@ -57,7 +56,15 @@
                  <td><c:out value="${clientMap.ADDRESS }"></c:out></td>
                  <td><c:out value="${clientMap.PHONE }"></c:out></td>
                  <td><c:out value="${clientMap.EMAIL }"></c:out></td>
-                 <td><c:out value="${clientMap.coursession.sessionId }"></c:out></td>
+                 <td>
+                    <form action="ClientCourses" method="POST">
+                       <input type="hidden" name="Client_ID" value="${clientMap.ID_Client}" />
+                        <button type="submit" style="background-color: Transparent;border: none;cursor:pointer;  overflow: hidden;"
+                                name="someName" value="someValue">
+                            <img src="https://www.parkinsons.org.uk/sites/all/themes/puk_main/img/frame/ui/pk-search.png"
+                                                alt="SomeAlternateText"/></button>
+                    </form>
+                 </td>
                </tr>
                </c:forEach>
               </tbody>

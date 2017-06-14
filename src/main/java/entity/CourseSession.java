@@ -16,11 +16,11 @@ public class CourseSession implements Serializable{
 	private Long sessionId;
 	
 	@Column (name = "START_DATE", nullable = false)
-    @Temporal(TemporalType.DATE)
+        @Temporal(TemporalType.DATE)
 	private Date startdate;
 	
 	@Column (name = "END_DATE", nullable = false)
-    @Temporal(TemporalType.DATE)
+        @Temporal(TemporalType.DATE)
 	private Date enddate;
 	
 	@ManyToOne(cascade = CascadeType.ALL)

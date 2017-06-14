@@ -1,6 +1,6 @@
 <div class="container-fluid">
 <div class="navbar-header">
-          <a class="navbar-brand" href="#">LOG4J</a>
+          <a class="navbar-brand" href="#" style="color:white">Courses Online</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <form class="navbar-form navbar-right">
@@ -8,6 +8,7 @@
           </form>
             
           <ul class="nav navbar-nav navbar-right">
+             
                 <li>
                     <a class="page-scroll" href="ClientServlet">Clients</a>
                 </li>
@@ -22,4 +23,4 @@
                 </li>
             </ul>
         </div>
-      </div>
+</div>

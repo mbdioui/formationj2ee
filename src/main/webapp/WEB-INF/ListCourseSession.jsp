@@ -6,12 +6,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Log4j</title>
+<title>List of Courses available</title>
 
 	<link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/animate.min.css" rel="stylesheet"> 
-    <link href="css/lightbox.css" rel="stylesheet"> 
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/animate.min.css" rel="stylesheet"> 
+        <link href="css/lightbox.css" rel="stylesheet"> 
 	<link href="css/main.css" rel="stylesheet">
 	<link href="css/responsive.css" rel="stylesheet">
 </head>
@@ -30,10 +30,10 @@
     <br>
     <br>
 
-    <div class="container">
+    <div class="container-fluid ">
       <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h2 class="sub-header">List Of Course Session</h2>
+          <h2 class="sub-header text-center">List Of Course Session</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -41,8 +41,8 @@
                   <th>Session Id</th>
                   <th>Start Date</th>
                   <th>End Date</th>
-                  <th>Course ID</th>
-                  <th>Location ID</th>
+                  <th>Course Name</th>
+                  <th>Location</th>
                 </tr>
               </thead>
               <tbody>
@@ -52,8 +52,17 @@
                  <td><c:out value="${CourseSessionMap.startdate }"></c:out></td>
                  <td><c:out value="${CourseSessionMap.enddate }"></c:out></td>
                  <td><c:out value="${CourseSessionMap.course.CODE }"></c:out></td>
-                 <td><c:out value="${CourseSessionMap.location.locationID }"></c:out></td>
-               </tr>
+                 <td><c:out value="${CourseSessionMap.location.city }"></c:out></td>
+                 <td>
+                    <form action="InscriptionClients" method="POST">
+                        <button type="submit" style="background-color: Transparent;border: none;cursor:pointer;  overflow: hidden;">
+                            <img src="https://community.upwork.com/html/assets/Register_40.png"
+                                                       alt="SomeAlternateText"/>
+                        </button>
+                        <input type="hidden" name="course_no" value="${CourseSessionMap.sessionId}" />
+                    </form>
+                 </td>
+                 </tr>
                </c:forEach>
               </tbody>
             </table>

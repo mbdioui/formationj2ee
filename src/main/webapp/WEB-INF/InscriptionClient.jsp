@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Course Inscription</title>
 
-<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet"> 
     <link href="css/lightbox.css" rel="stylesheet"> 
-	<link href="css/main.css" rel="stylesheet">
-	<link href="css/responsive.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
 	
 </head>
 <body>
@@ -23,19 +23,19 @@
             </div>
     </nav>
     </div>
-
+            <br><br>
 	
 	<section id="projects" class="padding-top">
         <div class="container">
          <div><center><h1>INSCRIPTION</h1></center></div><BR>
 
-                            <center><form action="ins.php" method="POST">
+                            <center><form action="Subscription" method="POST">
                             
                             <div class="form-group">
-                                <input type="text" name="FirsteName" class="form-control" required="required" placeholder="First Name">
+                                <input type="text" name="FirstName" class="form-control" required="required" placeholder="First Name">
                             </div>
 							
-							<div class="form-group">
+                            <div class="form-group">
                                 <input type="text" name="LastName" class="form-control" required="required" placeholder="Last Name">
                             </div>
                             
@@ -44,7 +44,7 @@
                             </div>
                             
                             <div class="form-group">
-                                <input type="text" name="em" class="form-control" required="required" placeholder="Email">
+                                <input type="text" name="email" class="form-control" required="required" placeholder="Email">
                             </div>
 							
                             <div class="form-group">
@@ -55,7 +55,8 @@
                                 <input type="submit"  class="btn btn-primary btn-lg" value="Confirmer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<input type="reset"  class="btn btn-primary btn-lg " value="Annuler"><br><br>
                             </div>
-							</form></center>						
+                                    <input type="hidden" value="${course_no}" name="course_no" />
+                            </form></center>						
         </div>
     </section>
 

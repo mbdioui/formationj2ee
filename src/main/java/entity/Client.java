@@ -13,7 +13,7 @@ public class Client {
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	@Column (name = "ID")
 	private Long ID_Client;
-	@Column(name = "Last_name", unique = true, nullable = false)
+	@Column(name = "Last_name", nullable = false)
 	private String LASTNAME;
 	@Column(name = "First_name", nullable = false)
 	private String FIRSTNAME;
@@ -23,9 +23,6 @@ public class Client {
 	private String PHONE;
 	@Column (name = "Email", unique = true)
 	private String EMAIL;
-	@ManyToOne(cascade = CascadeType.ALL)
-        @JoinColumn(name="COURSE_SESSION_ID")
-	private CourseSession coursession;
 	
 	
 	public Client() {
@@ -43,10 +40,11 @@ public class Client {
 		EMAIL = eMAIL;
 		
 	}
-
-
-
-    
+        @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "course_session_join", joinColumns = {
+			@JoinColumn(name = "ID", nullable = false, updatable = false) },
+			inverseJoinColumns = { @JoinColumn(name = "COURSE_SESSION_ID",
+					nullable = false, updatable = false) })
 
 
 	public Long getID_Client() {
@@ -109,20 +107,12 @@ public class Client {
 	}
 
 
-	public CourseSession getCoursession() {
-		return coursession;
-	}
-
-
-	public void setCoursession(CourseSession coursession) {
-		this.coursession = coursession;
-	}
 
 
 	@Override
 	public String toString() {
 		return "Client [ID_Client=" + ID_Client + ", LASTNAME=" + LASTNAME + ", FIRSTNAME=" + FIRSTNAME + ", ADDRESS="
-				+ ADDRESS + ", PHONE=" + PHONE + ", EMAIL=" + EMAIL + ", coursession=" + coursession + "]";
+				+ ADDRESS + ", PHONE=" + PHONE + ", EMAIL=" + EMAIL + "]";
 	}
 	
 	

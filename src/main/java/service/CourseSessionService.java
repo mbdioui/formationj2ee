@@ -3,6 +3,8 @@ package service;
 import entity.Course;
 import entity.CourseSession;
 import entity.Location;
+import entity.Client;
+import entity.Course_session_join;
 import java.util.Date;
 import java.util.List;
 import repository.CourseSessionDAO;
@@ -32,8 +34,14 @@ public class CourseSessionService {
     public List<Course> getCourseByLocation(String location) {
         return courseSessionDao.getCourseByLocation(location);
     }
+    public List<CourseSession> getCourseByClientId(int ID){
+        return courseSessionDao.getCourseSessionByClient(ID);
+    }
     public void addCourseToCourseSession(CourseSession courseSession, Course course) {
         courseSessionDao.addCourseToCourseSession(courseSession, course);
+    }
+    public void addClientToCourseSession(int courseSession,Client client){
+        courseSessionDao.addClientToCourseSession(courseSession, client);
     }
 
     public void addLocationToCourseSession(CourseSession courseSession, Location location) {

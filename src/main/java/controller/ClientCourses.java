@@ -11,22 +11,28 @@ import javax.servlet.http.HttpServletResponse;
 
 import entity.Client;
 import service.ClientService;
+import entity.CourseSession;
+import service.CourseSessionService;
 
-@WebServlet(name = "ClientServlet", urlPatterns = {"/ClientServlet"})
-public class ClientServlet extends HttpServlet {
+@WebServlet(name = "ClientCourses", urlPatterns = {"/ClientCourses"})
+public class ClientCourses extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
    
-    public ClientServlet() {
+    public ClientCourses() {
         super();
     }
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ClientService clientservice = new ClientService();
-		List<Client> clients = clientservice.getAllClients();
-                request.setAttribute("client", clients);
-		this.getServletContext().getRequestDispatcher("/WEB-INF/ListClients.jsp").forward(request, response);
+                CourseSessionService CourseSessionService = new CourseSessionService();
+                int clientid=Integer.parseInt(request.getParameter("Client_ID"));
+		List<CourseSession> CourseSessions = CourseSessionService.getCourseByClientId(clientid);
+                System.out.println(CourseSessions.size());
+                request.setAttribute("Client_ID", clientid);
+                request.setAttribute("Courses", CourseSessions);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/ListClientCourses.jsp").forward(request, response);
+		
 	}
 
 	/**

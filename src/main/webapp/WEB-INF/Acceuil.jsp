@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Log4j</title>
+<title>List Of Courses</title>
 
 	<link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/animate.min.css" rel="stylesheet"> 
-    <link href="css/lightbox.css" rel="stylesheet"> 
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/animate.min.css" rel="stylesheet"> 
+        <link href="css/lightbox.css" rel="stylesheet"> 
 	<link href="css/main.css" rel="stylesheet">
 	<link href="css/responsive.css" rel="stylesheet">
 </head>
@@ -30,10 +30,10 @@
    <br>
    <br>
 
-   <div class="container">
+   <div class="container-fluid">
      <div class="row">
        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-         <h2 class="sub-header">List Of Courses</h2>
+         <h2 class="sub-header text-center">List Of Courses</h2>
          <div class="table-responsive">
            <table class="table table-striped">
              <thead>

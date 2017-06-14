@@ -12,7 +12,7 @@ import util.HibernateUtil;
 
 public class ClientDAO {
 	
-	public void addClient(Client client) {
+	public Long addClient(Client client) {
         Transaction transaction = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -24,9 +24,11 @@ public class ClientDAO {
                 transaction.rollback();
             }
             e.printStackTrace(System.out);
-        } finally {
+        } 
             session.close();
-        }
+            return client.getID_Client();
+        
+        
     }
 
     public void deleteClient(Long clientId) {
@@ -96,22 +98,23 @@ public List<Client> getAllClients() {
         }
         return client;
     }
-    public void addCourseSessionToClient(Client client, CourseSession courseSession){
-        Transaction transaction = null;
+    
+    public Client getClientByMail(String clientMail) {
+        Client client = null;
+        Transaction trns = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
-            transaction = session.beginTransaction();
-            client.setCoursession(courseSession);
-            session.update(client);
-            session.getTransaction().commit();
+            trns = session.beginTransaction();
+            String queryString = "from Client where EMAIL = :mail";
+            Query query = session.createQuery(queryString);
+            query.setString("mail", clientMail);
+            client = (Client) query.uniqueResult();
         } catch (RuntimeException e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
             e.printStackTrace(System.out);
         } finally {
-            session.close();
+           session.close();
         }
+        return client;
     }
 
 }
