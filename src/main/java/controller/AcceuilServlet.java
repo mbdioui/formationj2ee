@@ -1,5 +1,6 @@
 package controller;
 
+import static controller.CourseSessionServlet.logger;
 import java.io.IOException;
 import java.util.List;
 
@@ -10,10 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entity.Course;
+import org.apache.log4j.Logger;
 import service.CourseService;
 
 @WebServlet(name = "AcceuilServlet", urlPatterns = {"/Acceuil"})
 public class AcceuilServlet extends HttpServlet {
+    final static Logger logger = Logger.getLogger(AcceuilServlet.class);
 
     public AcceuilServlet() {
         super();
@@ -23,6 +26,7 @@ public class AcceuilServlet extends HttpServlet {
 
         CourseService courseService = new CourseService();
         List<Course> courses = courseService.getAllCourses();
+        logger.info("number courses retreived :"+courses.size());
         request.setAttribute("Courses", courses);
         this.getServletContext().getRequestDispatcher("/WEB-INF/Acceuil.jsp").forward(request, response);
     }

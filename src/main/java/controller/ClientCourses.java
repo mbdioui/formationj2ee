@@ -1,5 +1,6 @@
 package controller;
 
+import static controller.AcceuilServlet.logger;
 import java.io.IOException;
 import java.util.List;
 
@@ -12,12 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 import entity.Client;
 import service.ClientService;
 import entity.CourseSession;
+import org.apache.log4j.Logger;
 import service.CourseSessionService;
 
 @WebServlet(name = "ClientCourses", urlPatterns = {"/ClientCourses"})
 public class ClientCourses extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+           final static Logger logger = Logger.getLogger(ClientCourses.class);
+
    
     public ClientCourses() {
         super();
@@ -28,6 +31,7 @@ public class ClientCourses extends HttpServlet {
                 CourseSessionService CourseSessionService = new CourseSessionService();
                 int clientid=Integer.parseInt(request.getParameter("Client_ID"));
 		List<CourseSession> CourseSessions = CourseSessionService.getCourseByClientId(clientid);
+                logger.info("Client :"+clientid+"/courses"+CourseSessions);
                 System.out.println(CourseSessions.size());
                 request.setAttribute("Client_ID", clientid);
                 request.setAttribute("Courses", CourseSessions);
